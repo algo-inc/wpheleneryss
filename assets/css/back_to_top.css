@@ -1,0 +1,37 @@
+.to-up {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    display: none;
+    z-index: 2;
+    cursor: pointer;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.to-up img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.to-up img:hover {
+    background: #ff8caa;
+    transition: all 0.5s ease;
+}
+
+@media (max-width: 670px) {
+    .to-up img {
+        width: 40px;
+        height: 40px;
+    }
+    .to-up img:hover {
+        background: none;
+    }
+    .to-up {
+        bottom: 18px;
+        right: 18px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+}

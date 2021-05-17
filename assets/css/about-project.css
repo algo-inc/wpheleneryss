@@ -1,0 +1,24 @@
+.image-slider {
+    padding: 0;
+}
+
+.image-slider__image {
+    text-align: center;
+    padding: 10px;
+}
+
+.image-slider__image img {
+    width: 100%;
+    height: 100%;
+    max-width: 1140px;
+    max-height: 600px;
+}
+
+.swiper-pagination {
+    align-items: center;
+    margin: 20px auto 20px auto;
+}
+
+.swiper-pagination {
+    position: relative;
+}
