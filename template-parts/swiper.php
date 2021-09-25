@@ -1,9 +1,10 @@
+<?php
+$images = rwmb_meta('gallery_images');
+?>
+<?php if($images && count($images)): ?>
 <div class="swiper">
     <div class="swiper-container">
         <div class="image-slider__wrapper swiper-wrapper">
-            <?php
-            $images = rwmb_meta('gallery_images');
-            ?>
             <?php foreach ($images as $id =>  $image): ?>
                 <div class="image-slider__slide swiper-slide">
                     <div class="image-slider__image">
@@ -27,3 +28,4 @@
     });
 </script>
 
+<?php endif ?>

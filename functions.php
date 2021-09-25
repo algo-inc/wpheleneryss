@@ -7,35 +7,37 @@ if (!defined('_S_VERSION')) {
 
 function add_styles_and_scripts()
 {
-    wp_enqueue_style('reset', get_template_directory_uri() . '/assets/css/reset.css');
-    wp_enqueue_style('typography', get_template_directory_uri() . '/assets/css/typography.css');
-    wp_enqueue_style('style', get_template_directory_uri() . '/assets/css/style.css');
-    wp_enqueue_style('arrow', get_template_directory_uri() . '/assets/css/arrow.css');
-    wp_enqueue_style('back_to_top', get_template_directory_uri() . '/assets/css/back_to_top.css');
-    wp_enqueue_style('footer', get_template_directory_uri() . '/assets/css/footer.css');
+    wp_enqueue_script('jquery');
+    wp_enqueue_style('reset-style', get_template_directory_uri() . '/assets/css/reset.css');
+    wp_enqueue_style('bace', get_template_directory_uri() . '/assets/css/base.css');
     wp_enqueue_style('header', get_template_directory_uri() . '/assets/css/header.css');
-    wp_enqueue_style('mail', get_template_directory_uri() . '/assets/css/mail.css');
-    wp_enqueue_style('menu', get_template_directory_uri() . '/assets/css/menu.css');
-    wp_enqueue_style('project', get_template_directory_uri() . '/assets/css/project.css');
-    wp_enqueue_style('about_project', get_template_directory_uri() . '/assets/css/about-project.css');
-    wp_enqueue_style('swiper', get_template_directory_uri() . '/assets/css/swiper.css');
-    wp_enqueue_style('social', get_template_directory_uri() . '/assets/css/social.css');
-    wp_enqueue_script( 'swiper', get_template_directory_uri() . '/assets/js/swiper.js', [], false, true);
-    wp_enqueue_script('menu', get_template_directory_uri() . '/assets/js/menu.js', [], false, true);
-    wp_enqueue_script('up-button', get_template_directory_uri() . '/assets/js/up_btn.js', [], false, true);
+    wp_enqueue_style('footer', get_template_directory_uri() . '/assets/css/footer.css');
+    wp_enqueue_script( 'swiper', get_template_directory_uri() . '/assets/js/scripts.js', [], false, true);
+
 }
 
 add_action('wp_enqueue_scripts', 'add_styles_and_scripts');
 
 
 function heleneryss_setup()
-{
+                                {
     add_theme_support('automatic-feed-links');
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     register_nav_menus(
         [
             'main_menu' => 'Главное меню',
+        ]
+    );
+
+    register_nav_menus(
+        [
+            'secondary_menu' => 'Другорядне меню',
+        ]
+    );
+    register_nav_menus(
+        [
+            'footer-menu' => 'Навігація по сайту',
         ]
     );
     add_theme_support(
@@ -63,25 +65,17 @@ function heleneryss_setup()
         )
     );
 
-    // Add theme support for selective refresh for widgets.
     add_theme_support('customize-selective-refresh-widgets');
-
-    /**
-     * Add support for core custom logo.
-     *
-     * @link https://codex.wordpress.org/Theme_Logo
-     */
-    add_theme_support(
-        'custom-logo',
-        array(
-            'height' => 250,
-            'width' => 250,
-            'flex-width' => true,
-            'flex-height' => true,
-        )
-    );
 }
-
+add_theme_support(
+    'custom-logo',
+    array(
+        'height' => 270,
+        'width' => 250,
+        'flex-width' => true,
+        'flex-height' => true,
+    )
+);
 add_action('after_setup_theme', 'heleneryss_setup');
 
 add_action('customize_register', function (WP_Customize_Manager $customizer) {
@@ -93,7 +87,7 @@ add_action('customize_register', function (WP_Customize_Manager $customizer) {
         )
     );
     $customizer->add_setting('copyright',
-        array('default' => '©Heleneryss')
+        array('default' => 'copyright')
     );
 
     $customizer->add_control('copyright', array(
@@ -112,16 +106,7 @@ add_action('customize_register', function (WP_Customize_Manager $customizer) {
             'type' => 'text',
         )
     );
-    $customizer->add_setting('telegram',
-        array('default' => '')
-    );
 
-    $customizer->add_control('telegram', array(
-            'label' => 'Telegram',
-            'section' => 'settings',
-            'type' => 'text',
-        )
-    );
     $customizer->add_setting('instagram',
         array('default' => '')
     );
@@ -133,12 +118,12 @@ add_action('customize_register', function (WP_Customize_Manager $customizer) {
         )
     );
 
-    $customizer->add_setting('linkedin',
+    $customizer->add_setting('Youtube',
         array('default' => '')
     );
 
-    $customizer->add_control('linkedin', array(
-            'label' => 'Linkedin',
+    $customizer->add_control('Youtube', array(
+            'label' => 'Youtube',
             'section' => 'settings',
             'type' => 'text',
         )
@@ -150,6 +135,16 @@ add_action('customize_register', function (WP_Customize_Manager $customizer) {
 
     $customizer->add_control('email', array(
             'label' => 'email',
+            'section' => 'settings',
+            'type' => 'text',
+        )
+    );
+    $customizer->add_setting('phone',
+        array('default' => '')
+    );
+
+    $customizer->add_control('phone', array(
+            'label' => 'phone',
             'section' => 'settings',
             'type' => 'text',
         )
